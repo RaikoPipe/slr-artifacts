@@ -450,3 +450,18 @@
 | 11   | Duplicate                                                        | **PASS -** No duplicate identified.                                                                                                                                                                                                                                                                                                                                                                                 |
 | 12   | Full text unavailable                                            | **PASS -** Full text available and reviewed.                                                                                                                                                                                                                                                                                                                                                                        |
 
+# LLMOps for End-to-End Automation in Facility Layout Planning: Methodology and Application
+|Code|Criterion|Assessment|
+|---|---|---|
+|1|Exclusively operational/tactical|**PASS -** Facility layout planning (multi-row module-to-room assignment, brownfield re-layout) alters the physical system configuration and is a strategic/upper-tactical planning task, not scheduling within a fixed configuration.|
+|2|No qualifying LLM component|**PASS -** LLM agents (o3 vision-LLM, GPT-4.1-mini) parse layout drawings, mediate optimization tool calls via MCP, and interpret/summarize planning solutions - the LLMs substantively structure and support the planning decision.|
+|3|Does not address strategic manufacturing/logistics planning task|**PASS -** Addresses facility layout planning in production/logistics, explicitly targeting internal logistics, material flow, and layout reconfiguration.|
+|4|AI/ML without LLM component|**PASS -** Metaheuristics (Nevergrad: PSO, DE, CMA etc.) are used, but as external tools orchestrated by LLM agents; a genuine LLM component is central.|
+|5|Non-manufacturing/logistics domain|**PASS -** Domain is factory/production layout planning with an industrial partner case; clearly manufacturing.|
+|6|Grey literature below Tier 1|**PASS -** Peer-reviewed conference paper, Procedia Computer Science 277 (Elsevier), 7th Intl. Conference on Industry of the Future and Smart Manufacturing.|
+|7|Published before January 2022|**PASS -** Published 2025/2026 (Procedia Computer Science 277, 2026).|
+|8|Language not English/German|**PASS -** Full text in English.|
+|9|Editorial/opinion only|**PASS -** Methodological paper with a proof-of-concept implementation and case study, not an opinion piece.|
+|10|Secondary literature|**PASS -** Primary research (design and validation of an LLMOps workflow), not a review.|
+|11|Duplicate|**PASS -** No indication of a duplicate record in the corpus.|
+|12|Full text unavailable|**PASS -** Full text available (open access, CC BY-NC-ND).|
