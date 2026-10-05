@@ -1,6 +1,6 @@
 # Extractor Instructions — LLM-Based Decision Support for the Strategic Planning Horizon in Manufacturing and Logistics
 
-**Version:** 3.0
+**Version:** 3.1 (changes from 3.0: §3.3 planning horizon tiers, theoretical framework rationale; §6 boundary cases; §9 tier agreement)
 **Project:** OSF [link]
 **Scope:** SLR on LLM-based decision support at the strategic and upper-tactical manufacturing and logistics planning horizon.
 **Subdomains:** Factory planning (VDI 5200), SC network design, strategic logistics/distribution network design, technology selection & investment appraisal, GPN design.
@@ -61,9 +61,13 @@ Full field definitions and JSON schema: <https://github.com/RaikoPipe/slr-data-m
 - **Subdomain:** one or more of {factory-planning · SC-network-design · logistics-distribution-network-design · technology-selection · site-selection · GPN-design}. If not stated explicitly, map by task description using Appendix A.
 - **Planning task type:** controlled vocabulary (§5).
 - **Time horizon explicitly stated:** Y / N.
-- **Planning horizon tier:** strategic / upper-tactical / ambiguous.
+- **Planning horizon tiers addressed** (pick all applicable): `Strategic` / `Tactical` / `Operational`; `NA` if the paper addresses no planning horizon (`NA` cannot be combined with other values). Record every tier the paper addresses separately instead of collapsing multi-tier papers into one class.
+- **Planning horizon rationale:** free text; quote the paper's horizon statement(s) per tier.
 - **System-configuring decision explicitly stated:** Y / N (does the paper frame the decision as determining *what exists*, not *how existing resources are used*?).
-- **Theoretical framework cited:** VDI-5200 / SC-Planning-Matrix / Lanza-et-al-2019 / Wiendahl-Nyhuis / Melo-Nickel-Saldanha-da-Gama-2009 / other (specify) / none.
+- **Theoretical framework cited:** VDI-5200 / SC-Planning-Matrix / Lanza-et-al-2019 / Wiendahl-Nyhuis / Melo-Nickel-Saldanha-da-Gama-2009 / other / none. `none` cannot be combined with other values.
+  - If `none` → **theoretical framework rationale** (required): brief reasoning why no framework applies (e.g., no planning-theory framework is referenced in the text).
+  - If `other` → **other theoretical framework specification** (required): name and cite the specific framework(s) utilized, as free text (not restricted to a controlled vocabulary).
+  - Both fields stay empty (`NA`) when their value is not selected.
 
 ### 3.4 LLM/AI intervention (LLM pre-fill; R1 verifies 100%)
 
@@ -143,7 +147,7 @@ RAG · multi-agent · LLM+solver · LLM+digital-twin · single-agent-pipeline ·
 - **Conditional values:** capture all values with conditions.
 - **Contradictions within source:** extract both values, flag in `notes`, escalate.
 - **Uncertainty about field assignment:** mark field with `?` suffix, add note, adjudicate.
-- **Subdomain boundary cases:** if a paper spans tactical and strategic tasks, include only if a strategic task is explicitly addressed; document both in notes.
+- **Subdomain boundary cases:** if a paper spans tactical and strategic tasks, include only if a strategic task is explicitly addressed (i.e., `Strategic` is among the planning horizon tiers addressed); record all tiers addressed and document the reasoning in the horizon rationale.
 - **Outlier metrics** (> 2× the range of other sources for the same metric type): flag, verify, report with context — do not exclude.
 
 ---
@@ -192,7 +196,7 @@ Every extracted field receives a provenance tag:
 - **Sample:** 5 representative sources.
 - **Procedure:** R1 and R2 independently extract all fields manually. LLM pipeline runs in parallel.
 - **Agreement:** assessed between R1–R2 and between human–LLM per field type.
-- **Thresholds:** κ ≥ 0.7 (categorical fields), ≥ 80% agreement (continuous fields).
+- **Thresholds:** κ ≥ 0.7 (categorical fields), ≥ 80% agreement (continuous fields). Multi-valued categorical fields (e.g., planning horizon tiers) are assessed per value (present/absent).
 - **Outcome:** pilot results frozen in pre-registration update before full extraction proceeds. Instruction revisions triggered if thresholds unmet.
 
 ---
