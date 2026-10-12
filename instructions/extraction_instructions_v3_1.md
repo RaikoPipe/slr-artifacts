@@ -1,6 +1,6 @@
 # Extractor Instructions — LLM-Based Decision Support for the Strategic Planning Horizon in Manufacturing and Logistics
 
-**Version:** 3.1 (changes from 3.0: §3.3 planning horizon tiers, theoretical framework rationale; §6 boundary cases; §9 tier agreement)
+**Version:** 3.1 (changes from 3.0: §3.3 planning horizon tiers, theoretical framework rationale; §6 boundary cases; §9 tier agreement; §3.4 models restricted to deployed and evaluated LLMs)
 **Project:** OSF [link]
 **Scope:** SLR on LLM-based decision support at the strategic and upper-tactical manufacturing and logistics planning horizon.
 **Subdomains:** Factory planning (VDI 5200), SC network design, strategic logistics/distribution network design, technology selection & investment appraisal, GPN design.
@@ -71,7 +71,9 @@ Full field definitions and JSON schema: <https://github.com/RaikoPipe/slr-data-m
 
 ### 3.4 LLM/AI intervention (LLM pre-fill; R1 verifies 100%)
 
-- **Model(s):** exact name + version as reported (e.g., "GPT-4o", "Llama 3.1 70B").
+- **Model(s):** exact name + version (e.g., "GPT-4o", "Llama 3.1 70B") of only the LLMs deployed and evaluated with the paper's own method.
+- **Models rationale:** free text; list other LLMs discussed in the paper but not deployed and evaluated with the method (e.g., in related work or as external baselines) and their role.
+- Model family and open-weight refer only to the models listed under Model(s).
 - **Model family:** GPT / Claude / Gemini / Llama / Mistral / Qwen / DeepSeek / other (specify).
 - **Open-weight:** Y (Llama, Mistral, Qwen, DeepSeek …) / N (GPT, Claude, Gemini …) / mixed.
 - **Fine-tuning:** none / prompt-engineering-only / LoRA / full-fine-tuning / other (specify).
