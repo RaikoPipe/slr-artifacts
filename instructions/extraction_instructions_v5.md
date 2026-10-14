@@ -1,7 +1,7 @@
 # Extractor Instructions — LLM-Based Decision Support for the Strategic Planning Horizon in Manufacturing and Logistics
 
-**Version:** 3.1 (changes from 3.0: §3.3 planning horizon tiers, theoretical framework rationale; §6 boundary cases; §9 tier agreement; §3.4 models restricted to deployed and evaluated LLMs)
-**Project:** OSF [link]
+**Version:** 5.0 
+**Project:** https://github.com/RaikoPipe/slr-artifacts
 **Scope:** SLR on LLM-based decision support at the strategic and upper-tactical manufacturing and logistics planning horizon.
 **Subdomains:** Factory planning (VDI 5200), SC network design, strategic logistics/distribution network design, technology selection & investment appraisal, GPN design.
 **Reviewer roles:** R1 (primary researcher), R2 (fellow researcher), R3 (supervisor / adjudicator).
@@ -12,21 +12,21 @@
 
 | Tier | Fields | Method | Verification |
 |------|--------|--------|--------------|
-| **Bibliographic metadata** | DOI, title, authors, affiliations, country, year, venue, venue type, language, funding source | LLM-extracted | R1 spot-checks 10% |
+| **Bibliographic metadata** | DOI, title, authors, affiliations, country, year, venue, venue type, language, funding source | Imported from search-stage records (Scopus / WoS / OpenAlex); gaps filled by R1 | R1 spot-checks 10% against title page |
 | **Descriptive fields** | Study characterization, strategic planning scope, LLM/AI intervention, OR substrate, evaluation & outcomes, retrieval traceability | LLM pre-fill | R1 verifies 100% against source text |
-| **Interpretive fields** | Gap indicators, quality appraisal, VDI 5200 phase mapping, validation-status judgments | extracted by R1 with 100% dual-verification by R2
+| **Interpretive fields** | Gap indicators, quality appraisal, VDI 5200 phase mapping, validation-status judgments | LLM-extracted with reasoning + evidence locator | R1 and R2 each verify 100%, blind to each other (§7) |
 
 ---
 
 ## 2. Workflow
 
 1. Open source PDF and extraction table (`extraction_table.csv`).
-2. **Bibliographic tier:** scan LLM output, spot-check flagged fields.
+2. **Bibliographic tier:** fill fields missing from the imported record; spot-check per §3.1.
 3. **Descriptive tier:** verify each LLM-prefilled value against source text; correct or confirm using the provenance protocol (§8).
-4. **Interpretive tier:** extract manually following the field rules below.
+4. **Interpretive tier:** verify each LLM value and its reasoning against the source per §7 (R1 and R2 separately).
 5. Log page/section reference for every numeric metric.
-6. Flag uncertainties in the `notes` column; escalate ambiguous cases per §10.
-7. Save after each source; commit to OSF daily.
+6. Record uncertainties in the affected field's `_reasoning` column; escalate ambiguous cases per §10.
+7. Save after each source; commit to the GitHub repository daily.
 
 ---
 
@@ -34,7 +34,10 @@
 
 Full field definitions and JSON schema: <https://github.com/RaikoPipe/slr-data-model>
 
-### 3.1 Bibliographic metadata (LLM-prefilled; R1 spot-check 10%)
+### 3.1 Bibliographic metadata (imported from search-stage records; R1 spot-check 10%)
+
+- Source: deduplicated search records (OpenAlex for snowballed records), joined by DOI or record ID. Not LLM-extracted.
+- Fields missing in the record: R1 fills from the title page, else `NR`.
 
 - **DOI, title, authors, affiliations, country of corresponding author, year, venue, language:** verify against source header/footer.
 - **Venue type:** Scimago Q1–Q4 journal (lookup current year) · conference proceedings · Tier 1 preprint (institutional affiliation confirmed) · grey literature.
@@ -48,11 +51,12 @@ Full field definitions and JSON schema: <https://github.com/RaikoPipe/slr-data-m
 
 | Value | Definition |
 |-------|------------|
-| `implemented-validated` | Working system + quantitative evaluation |
-| `prototype` | Working system, limited or no evaluation |
+| `implemented-validated` | Working system + evaluation under a defined protocol with defined metrics (benchmark, case study with quantitative metrics, user study) |
+| `prototype` | Working system demonstrated on illustrative case(s) or a single walkthrough without defined metrics |
 | `framework-only` | Architecture described, no implementation |
 | `conceptual` | Position or vision paper |
 
+- Validation status is an **interpretive** field (§1): LLM-extracted, R1 + R2 verify 100%. It fixes the quality-appraisal category (§3.9).
 - **Industry sector** and **case study domain:** as reported.
 - **Stated research questions:** verbatim or close paraphrase of the paper's RQs; `NR` if none stated.
 
@@ -102,23 +106,49 @@ Full field definitions and JSON schema: <https://github.com/RaikoPipe/slr-data-m
 - **Source:** Scopus / WoS / OpenAlex / snowballing.
 - **Anchor paper(s):** if retrieved via snowballing, list the anchor(s).
 
-### 3.8 Gap indicators (R1 manual; interpretive)
+### 3.8 Gap indicators (LLM; interpretive; R1 + R2 verify 100%)
 
 - **HITL pattern present:** Y / N. If Y → type: approval-gate / what-if-interface / escalation-protocol / other (specify).
 - **Domain knowledge formalization present:** Y / N. If Y → type: ontology / knowledge-graph / standards-encoding / other (specify).
 - **Evaluation framework used:** Y / N. If Y → type: benchmark / rubric / domain-specific-metric / other (specify).
 
-### 3.9 Quality appraisal (R1 manual; interpretive)
+### 3.9 Quality appraisal (LLM; interpretive; R1 + R2 verify 100%)
 
-Three-dimension rubric, each scored 1–3. Score each dimension independently before summing.
+Lightweight checklist informed by MMAT (Hong et al., 2018) and Hevner et al. (2004). Two steps: classify, then appraise.
 
-| Dimension | 1 | 2 | 3 |
-|-----------|---|---|---|
-| **Methodological transparency** | Method description insufficient to replicate | Key steps described but gaps remain | Fully replicable |
-| **Empirical grounding** | Conceptual or framework-only | Prototype or limited evaluation | Implemented + quantitative evaluation |
-| **Venue tier** | Preprint | Q3–Q4 journal or conference | Q1–Q2 journal |
+**Step 1 — Study-type category** (one value):
 
-**Composite range: 3–9.** Sources scoring **≤ 4** are dual-verified by R2.
+| Category | Definition |
+|----------|------------|
+| `A` Empirical | Primary data collection with a defined evaluation protocol (case study with quantitative metrics, controlled benchmark, user study) |
+| `B` Prototype / design science | Implemented system demonstrated on illustrative cases without controlled evaluation |
+| `C` Conceptual / framework | Architecture, taxonomy, or framework without implementation or empirical evaluation |
+
+The category is **derived** from validation status (§3.2), not coded independently:
+
+| Validation status | Category |
+|-------------------|----------|
+| `implemented-validated` | `A` |
+| `prototype` | `B` |
+| `framework-only` | `C` |
+| `conceptual` | `C` |
+
+Decision rules (apply when setting validation status): prototype + controlled evaluation → `implemented-validated` → `A`; prototype demonstrated on a single walkthrough without defined metrics → `prototype` → `B`. The category rationale is the `validation_status_rationale`. To change the category, change the validation status.
+
+**Step 2 — Appraisal items**, each scored `Yes` / `Partially` / `No`, each with its own `_reasoning`:
+
+| Item | Question |
+|------|----------|
+| **Q1** Methodological transparency | Is the method (study design, system architecture, or framework logic) described in enough detail for independent replication? |
+| **Q2** Empirical or demonstration grounding | `A`: are metrics defined and results reported with context (sample size, variance, comparator)? `B`: is the artifact demonstrated on a case that exercises its core claims? `C`: is the argumentation internally consistent and traceable? |
+| **Q3** Validity and limitation discussion | Are the boundaries of the contribution explicitly discussed (failure modes, scalability, external validity, domain assumptions)? |
+| **Q4** Positioning against prior work | Is the contribution compared against existing solutions with explicit differentiation? |
+
+Q2 is read conditionally on the category; Q1, Q3, Q4 apply uniformly. No composite score is computed.
+
+**Low-quality flag:** `Y` if a source scores `No` on ≥ 2 items. The flag drives the pre-registered sensitivity analysis. Quality scores are never used for exclusion.
+
+**Venue tier** is not an appraisal item; it is recorded in the bibliographic tier (§3.1: Q1–Q2 journal / Q3–Q4 journal or peer-reviewed conference / Tier 1 preprint).
 
 ---
 
@@ -127,6 +157,7 @@ Three-dimension rubric, each scored 1–3. Score each dimension independently be
 - **Primary table:** tidy data — one row per study, one column per field.
 - **Multi-valued fields** (e.g., multiple LLM models per study): separate long-format table linked by study ID.
 - **Not reported vs. not applicable:** use `NR` for missing data, `NA` for structurally inapplicable fields. Never leave cells blank.
+- **Reasoning columns:** every extracted field `<field>` has a `<field>_reasoning` column (replaces the former `notes` column): justification + evidence locator (page/section; for interpretive fields also a short verbatim anchor). Filled by the LLM; verifiers append their own reasoning when correcting or flagging. Fields already named `*_rationale` in the schema serve this role.
 - **Output format:** structured JSON conforming to the schema at <https://github.com/RaikoPipe/slr-data-model>. Raw LLM output validated against the schema before human review; schema-invalid outputs flagged and re-extracted.
 
 ---
@@ -147,8 +178,8 @@ RAG · multi-agent · LLM+solver · LLM+digital-twin · single-agent-pipeline ·
 
 - **Ranges:** capture both endpoints + context.
 - **Conditional values:** capture all values with conditions.
-- **Contradictions within source:** extract both values, flag in `notes`, escalate.
-- **Uncertainty about field assignment:** mark field with `?` suffix, add note, adjudicate.
+- **Contradictions within source:** extract both values, flag in the field's `_reasoning`, escalate.
+- **Uncertainty about field assignment:** mark field with `?` suffix, explain in `_reasoning`, adjudicate.
 - **Subdomain boundary cases:** if a paper spans tactical and strategic tasks, include only if a strategic task is explicitly addressed (i.e., `Strategic` is among the planning horizon tiers addressed); record all tiers addressed and document the reasoning in the horizon rationale.
 - **Outlier metrics** (> 2× the range of other sources for the same metric type): flag, verify, report with context — do not exclude.
 
@@ -159,8 +190,8 @@ RAG · multi-agent · LLM+solver · LLM+digital-twin · single-agent-pipeline ·
 ### Input preparation
 
 - Full-text PDF converted to markdown via **pymupdf**.
-- **Bibliographic fields:** only the title page and references section are passed.
-- **All other fields:** the full text is passed as a single document context.
+- **Bibliographic fields:** not passed to the LLM (§3.1).
+- **Descriptive and interpretive fields:** the full text is passed as a single document context; the LLM returns value + `_reasoning` per field.
 
 ### Output validation
 
@@ -176,6 +207,14 @@ For each LLM-prefilled field:
 3. If incorrect → overwrite value, mark `verified=corrected`, log original in `llm_raw` column.
 4. If unverifiable → mark `verified=unverifiable`, escalate.
 
+**Interpretive fields (dual verification):**
+
+1. R1 and R2 verify in separate copies of the extraction table; neither sees the other's verdicts until both are done.
+2. Verify against the cited evidence locator, not the reasoning alone: the value must follow from the source under the field rule.
+3. For absence values (`N`, `none`, score 1), run a targeted full-text search (field keywords + synonyms) before confirming; absence claims are where LLM errors are hardest to spot.
+4. Each verifier records `verified=Y/corrected/unverifiable` and, if corrected, their own value + reasoning.
+5. Merge: identical final values → accepted (tag `L-V` or `L-C`). Differing values → R1–R2 discussion → R3 (§10). Log outcome in `_reasoning`.
+
 Report count of LLM errors per field type at the end of each extraction session. If ≥ 3 same-type LLM errors are detected, refine the prompt, re-extract affected records, and update the pre-registration.
 
 ---
@@ -186,19 +225,23 @@ Every extracted field receives a provenance tag:
 
 | Tag | Meaning |
 |-----|---------|
+| `M` | Imported from search-stage metadata |
 | `H` | Human extracted |
 | `L-V` | LLM extracted, human verified |
 | `L-C` | LLM extracted, human corrected |
 | `D` | Dual-reviewer extraction |
+
+Record the verifier(s) in `verified_by` (e.g., `R1;R2`).
 
 ---
 
 ## 9. Pilot Extraction (Stage 1)
 
 - **Sample:** 5 representative sources.
-- **Procedure:** R1 and R2 independently extract all fields manually. LLM pipeline runs in parallel.
+- **Procedure:** R1 and R2 independently extract all descriptive and interpretive fields manually, blind to LLM output. LLM pipeline runs in parallel on the same fields. Bibliographic fields are imported and not piloted.
 - **Agreement:** assessed between R1–R2 and between human–LLM per field type.
-- **Thresholds:** κ ≥ 0.7 (categorical fields), ≥ 80% agreement (continuous fields). Multi-valued categorical fields (e.g., planning horizon tiers) are assessed per value (present/absent).
+- **Thresholds:** Gwet's AC1 ≥ 0.8 (categorical fields), ≥ 80% agreement (continuous/text fields). Multi-valued categorical fields (e.g., planning horizon tiers) are assessed per value (present/absent). Report raw agreement alongside AC1. With 5 sources, AC1 is computed per field and, as the gating figure, pooled per tier (descriptive / interpretive); per-field values are reported but a single field fails the gate only if its pooled tier also fails or the field's raw agreement is < 80%.
+- **LLM gate:** LLM vs. R1–R2 consensus agreement reported per field, separately for descriptive and interpretive tiers. An interpretive field below threshold after one prompt revision and re-pilot reverts to manual R1 extraction with 100% R2 verification.
 - **Outcome:** pilot results frozen in pre-registration update before full extraction proceeds. Instruction revisions triggered if thresholds unmet.
 
 ---
@@ -210,7 +253,7 @@ Escalate to R3 when:
 - R1 and R2 disagree after one discussion round.
 - Source contradicts itself on a key field.
 - Subdomain classification or strategic-scope determination is genuinely ambiguous (document reasoning in notes).
-- Self-authored paper: always routed to R2 for independent extraction; disagreements to R3.
+- Self-authored paper: R1 excluded; R2 independently verifies all tiers; disagreements with the LLM value that R2 cannot resolve go to R3.
 
 ---
 
@@ -219,11 +262,3 @@ Escalate to R3 when:
 - **Max 2 hours** per session (fatigue → errors).
 - Log start/end time per session.
 - No extraction under time pressure; defer rather than guess.
-
----
-
-## Appendices
-
-- **Appendix A:** Strategic subdomain mapping decision tree — `/extraction/appendix_A_subdomain_tree.pdf`
-- **Appendix B:** Quality appraisal rubric (full scoring guide) — `/extraction/appendix_B_quality_rubric.pdf`
-- **LLM prompts and version log:** `/extraction/llm_artifacts/`
