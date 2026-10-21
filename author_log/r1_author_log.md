@@ -1,3 +1,10 @@
+## 19.10.2026
+Validation and taxonomy gaps fixed and extended by checking against external frameworks. Sources for each change are cited in the code comments and enum docstrings.
+
+## 16.10.2026
+- found remaining underspecifications/inconsistencies in the extraction schema during R1/R2 disagreement resolving discussion in the pilot stage
+  - requires re-work of extraction schema - no OSF form revision required
+
 ## 13.10.2026
 - repeat search: abstract and fulltext screened; next step resolving disagreement by discussion, then incorporating the repeat search data items into the main corpus
 - inconsistencies in extraction instructions found
