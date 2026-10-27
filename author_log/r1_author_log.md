@@ -1,3 +1,18 @@
+## 27.10.2026
+- consensus reviewed against revised rules; 3 cells corrected (authors_claimed_tier, system_configuring_decision_stated, Q3), schema_version -> 0.10.2
+- schema 0.10.2: Q1 availability, Q2 category anchors, network-member selection, evaluation paradigm clarified
+- second LLM re-pilot (0.10.2) passes the §9 gate with no failing field -> full LLM prefill permitted
+- pilot folder sorted by schema version; final pilot report (pilot_report.md) and agreement files added
+
+## 26.10.2026
+- consensus table created
+- updated pre-reg form
+- calculated agreement metrics between R1/R2/LLM; R1&R2 vs. LLM (GLM 5.3) pass Gwet's AC1 80% threshold --> proceeding to LLM-prefill with GLM 5.3
+- failing fields require rule revision + re-pilot (§9) before full prefill -> schema 0.10.1, instructions updated, LLM re-pilot passes all tiers (2 fields still below gate: Q2, Q3)
+
+## 23.10.2026
+- concluded extraction review - now creating the consensus table to compare the LLM prefill against.
+
 ## 19.10.2026
 Validation and taxonomy gaps fixed and extended by checking against external frameworks. Sources for each change are cited in the code comments and enum docstrings.
 
@@ -36,7 +51,7 @@ Validation and taxonomy gaps fixed and extended by checking against external fra
 - Resolved disagreements by discussion - no escalation to R3
 - Continuing to snowballing
 - Conducted snowballing (using python pipeline with openalex API)
-## 07.08.2026
+## 19.08.2026
 - performed stage 2 abstract screening
 - manually reviewed maybes, inclusions and 25% exclusion spot check -> no ambiguities identified
 - concluded abstract screening; beginning stage 4 fulltext screening
