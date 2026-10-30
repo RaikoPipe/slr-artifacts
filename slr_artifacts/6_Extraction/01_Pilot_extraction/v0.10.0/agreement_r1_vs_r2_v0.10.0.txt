@@ -1,0 +1,143 @@
+           tier                                                       field   kind  n_studies  n_items    pa    ac1  uncertain  n_coded  raw_coded  pass
+    descriptive                        study_characterization.research_type single          5        5 0.800  0.772          0      NaN        NaN  True
+   interpretive                    study_characterization.validation_status single          5        5 1.000  1.000          0      NaN        NaN  True
+    descriptive                          strategic_planning_scope.subdomain  multi          5       30 0.967  0.952          0      NaN        NaN  True
+    descriptive                 strategic_planning_scope.planning_task_type  multi          5      110 0.955  0.947          0      NaN        NaN  True
+    descriptive                        strategic_planning_scope.scp_process  multi          5       25 0.960  0.927          0      NaN        NaN  True
+    descriptive                      strategic_planning_scope.vdi5200_phase  multi          5       40 0.875  0.828          0      NaN        NaN  True
+    descriptive     strategic_planning_scope.time_horizon_explicitly_stated single          5        5 0.800  0.780          0      NaN        NaN  True
+    descriptive             strategic_planning_scope.planning_horizon_tiers  multi          5       20 0.950  0.911          0      NaN        NaN  True
+    descriptive               strategic_planning_scope.authors_claimed_tier  multi          5       20 0.600  0.360          0      NaN        NaN False
+   interpretive        strategic_planning_scope.system_configuring_decision single          5        5 1.000  1.000          0      NaN        NaN  True
+    descriptive strategic_planning_scope.system_configuring_decision_stated single          5        5 0.600  0.231          0      NaN        NaN False
+    descriptive        strategic_planning_scope.theoretical_framework_cited  multi          5       35 0.943  0.924          0      NaN        NaN  True
+    descriptive                               llm_intervention.model_family  multi          5       70 0.971  0.962          0      NaN        NaN  True
+    descriptive                                llm_intervention.open_weight single          5        5 0.600  0.504          0      NaN        NaN False
+    descriptive                                 llm_intervention.deployment single          5        5 0.800  0.774          0      NaN        NaN  True
+    descriptive                                   llm_intervention.modality single          5        5 1.000  1.000          0      NaN        NaN  True
+    descriptive                                llm_intervention.fine_tuning  multi          5       40 0.950  0.936          0      NaN        NaN  True
+    descriptive                       llm_intervention.prompting_techniques  multi          5       40 0.825  0.693          0      NaN        NaN  True
+    descriptive                       llm_intervention.agentic_architecture single          5        5 1.000  1.000          0      NaN        NaN  True
+    descriptive                          llm_intervention.workflow_patterns  multi          5       30 0.867  0.770          0      NaN        NaN  True
+    descriptive                               llm_intervention.agent_memory single          5        5 1.000  1.000          0      NaN        NaN  True
+    descriptive                        llm_intervention.planning_reflection single          5        5 1.000  1.000          0      NaN        NaN  True
+    descriptive                                   llm_intervention.tool_use single          5        5 0.800  0.655          0      NaN        NaN  True
+    descriptive                               llm_intervention.integrations  multi          5       55 0.927  0.896          0      NaN        NaN  True
+    descriptive                 or_substrate.optimization_tradition_present single          5        5 0.800  0.600          0      NaN        NaN  True
+    descriptive                            or_substrate.formalization_level single          5        5 0.400  0.231          0      NaN        NaN False
+    descriptive                          or_substrate.optimization_paradigm  multi          5       45 0.956  0.949          0      NaN        NaN  True
+    descriptive                                    or_substrate.llm_or_role  multi          5       35 0.800  0.698          0      NaN        NaN  True
+    descriptive                        evaluation_and_outcomes.study_design  multi          5       35 0.857  0.754          0      NaN        NaN  True
+    descriptive                 evaluation_and_outcomes.evaluation_paradigm single          5        5 0.600  0.487          0      NaN        NaN False
+    descriptive                          evaluation_and_outcomes.comparator  multi          5       20 0.900  0.840          0      NaN        NaN  True
+    descriptive              evaluation_and_outcomes.independent_evaluation single          5        5 1.000  1.000          0      NaN        NaN  True
+    descriptive                        evaluation_and_outcomes.llm_as_judge single          5        5 1.000  1.000          0      NaN        NaN  True
+    descriptive         evaluation_and_outcomes.efficiency_metrics_reported single          5        5 0.800  0.740          0      NaN        NaN  True
+    descriptive                 evaluation_and_outcomes.statistical_testing single          5        5 1.000  1.000          0      NaN        NaN  True
+    descriptive                               retrieval_traceability.source single          5        5 1.000  1.000          0      NaN        NaN  True
+   interpretive                         gap_indicators.hitl_pattern_present single          5        5 1.000  1.000          0      NaN        NaN  True
+   interpretive                                    gap_indicators.hitl_type  multi          5       30 0.900  0.817          0    5.000      0.900  True
+   interpretive       gap_indicators.domain_knowledge_formalization_present single          5        5 1.000  1.000          0      NaN        NaN  True
+   interpretive                        gap_indicators.domain_knowledge_type  multi          5       40 0.875  0.812          0    5.000      0.875  True
+   interpretive                    gap_indicators.evaluation_framework_used single          5        5 1.000  1.000          0      NaN        NaN  True
+   interpretive                    gap_indicators.evaluation_framework_type  multi          5       30 0.833  0.684          0    5.000      0.833  True
+   interpretive                                     gap_indicators.kg_model single          5        5 1.000  1.000          0    0.000        NaN  True
+   interpretive                              gap_indicators.kg_construction single          5        5 1.000  1.000          0    0.000        NaN  True
+   interpretive                                     gap_indicators.kg_usage  multi          5       20 1.000  1.000          0    0.000        NaN  True
+   interpretive                             gap_indicators.automation_stage  multi          5       20 0.800  0.655          0      NaN        NaN  True
+   interpretive                            gap_indicators.decision_autonomy single          5        5 1.000  1.000          0      NaN        NaN  True
+   interpretive            quality_appraisal.q1_methodological_transparency single          5        5 0.600  0.474          0      NaN        NaN False
+   interpretive   quality_appraisal.q2_empirical_or_demonstration_grounding single          5        5 0.800  0.733          0      NaN        NaN  True
+   interpretive     quality_appraisal.q3_validity_and_limitation_discussion single          5        5 0.600  0.524          0      NaN        NaN False
+   interpretive         quality_appraisal.q4_positioning_against_prior_work single          5        5 0.200 -0.127          0      NaN        NaN False
+reproducibility                    quality_appraisal.model_version_reported single          5        5 1.000  1.000          0      NaN        NaN  True
+reproducibility                         quality_appraisal.prompts_disclosed single          5        5 0.600  0.452          0      NaN        NaN False
+reproducibility                  quality_appraisal.decoding_params_reported single          5        5 1.000  1.000          0      NaN        NaN  True
+reproducibility                            quality_appraisal.code_available single          5        5 1.000  1.000          0      NaN        NaN  True
+reproducibility                            quality_appraisal.data_available single          5        5 0.800  0.747          0      NaN        NaN  True
+reproducibility                         quality_appraisal.run_date_reported single          5        5 1.000  1.000          0      NaN        NaN  True
+
+Pooled per tier:
+                 n_items    pa    pe   ac1  pass
+tier                                            
+descriptive          740 0.901 0.273 0.864  True
+interpretive         200 0.870 0.284 0.819  True
+reproducibility       30 0.900 0.187 0.877  True
+
+9 of 57 fields fail the gate: strategic_planning_scope.authors_claimed_tier, strategic_planning_scope.system_configuring_decision_stated, llm_intervention.open_weight, or_substrate.formalization_level, evaluation_and_outcomes.evaluation_paradigm, quality_appraisal.q1_methodological_transparency, quality_appraisal.q3_validity_and_limitation_discussion, quality_appraisal.q4_positioning_against_prior_work, quality_appraisal.prompts_disclosed
+
+Disagreements (73):
+                          doi                                                       field                                                            A                                                           B
+   10.1016/j.jmsy.2026.02.015                        study_characterization.research_type                                          validation-research                                         evaluation-research
+ 10.1016/j.mfglet.2025.10.017                          strategic_planning_scope.subdomain                       factory-planning; technology-selection                                        technology-selection
+ 10.1016/j.mfglet.2025.10.017                 strategic_planning_scope.planning_task_type                      other; production-system-concept-design                                         technology-scouting
+         10.2139/ssrn.5370043                 strategic_planning_scope.planning_task_type                     other; resilience-risk-scenario-planning SC-network-configuration; resilience-risk-scenario-planning
+         10.2139/ssrn.5370043                        strategic_planning_scope.scp_process                 distribution; procurement; production; sales                       distribution; procurement; production
+   10.1016/j.jmsy.2026.02.015                      strategic_planning_scope.vdi5200_phase                      3-concept-planning; 4-detailed-planning                                          3-concept-planning
+ 10.1016/j.mfglet.2025.10.017                      strategic_planning_scope.vdi5200_phase                       4-detailed-planning; 7-ramp-up-support                                                          NA
+10.1080/0951192x.2025.2482258                      strategic_planning_scope.vdi5200_phase                      3-concept-planning; 4-detailed-planning                                          3-concept-planning
+         10.2139/ssrn.5370043     strategic_planning_scope.time_horizon_explicitly_stated                                                            Y                                                           N
+   10.1016/j.jmsy.2026.02.015             strategic_planning_scope.planning_horizon_tiers                                          Strategic; Tactical                                                   Strategic
+   10.1016/j.jmsy.2026.02.015               strategic_planning_scope.authors_claimed_tier                                                           NA                                                   Strategic
+ 10.1016/j.mfglet.2025.10.017               strategic_planning_scope.authors_claimed_tier                                                           NA                                                   Strategic
+10.1080/0951192x.2025.2482258               strategic_planning_scope.authors_claimed_tier                                                           NA                                                   Strategic
+         10.2139/ssrn.5370043               strategic_planning_scope.authors_claimed_tier                                                           NA                                                    Tactical
+   10.1016/j.jmsy.2026.02.015 strategic_planning_scope.system_configuring_decision_stated                                                            N                                                           Y
+      10.1145/3742413.3789061 strategic_planning_scope.system_configuring_decision_stated                                                            N                                                           Y
+10.1080/0951192x.2025.2482258        strategic_planning_scope.theoretical_framework_cited                                                         none                                                       other
+10.1080/0951192x.2025.2482258                               llm_intervention.model_family                                                      Mistral                                           GLM; GPT; Mistral
+10.1080/0951192x.2025.2482258                                llm_intervention.open_weight                                                            Y                                                       mixed
+      10.1145/3742413.3789061                                llm_intervention.open_weight                                                            N                                                       mixed
+10.1080/0951192x.2025.2482258                                 llm_intervention.deployment                                                local-on-prem                                                       mixed
+         10.2139/ssrn.5370043                                llm_intervention.fine_tuning                                                        other                                            full-fine-tuning
+ 10.1016/j.mfglet.2025.10.017                       llm_intervention.prompting_techniques                                                    zero-shot                                    other; structured-output
+10.1080/0951192x.2025.2482258                       llm_intervention.prompting_techniques               CoT; ReAct; few-shot; other; structured-output                               CoT; other; structured-output
+      10.1145/3742413.3789061                       llm_intervention.prompting_techniques                     CoT; other; structured-output; zero-shot                                      CoT; structured-output
+ 10.1016/j.mfglet.2025.10.017                          llm_intervention.workflow_patterns evaluator-optimizer; orchestrator-workers; prompt-chainin...                   evaluator-optimizer; orchestrator-workers
+10.1080/0951192x.2025.2482258                          llm_intervention.workflow_patterns                         evaluator-optimizer; prompt-chaining                                         evaluator-optimizer
+      10.1145/3742413.3789061                          llm_intervention.workflow_patterns                             parallelization; prompt-chaining                                             prompt-chaining
+10.1080/0951192x.2025.2482258                                   llm_intervention.tool_use                                                            Y                                                           N
+      10.1145/3742413.3789061                               llm_intervention.integrations                                       ML-model; database-SQL                               ML-model; simulation-platform
+         10.2139/ssrn.5370043                               llm_intervention.integrations                         code-execution; database-SQL; solver                     database-SQL; enterprise-system; solver
+10.1080/0951192x.2025.2482258                 or_substrate.optimization_tradition_present                                                            Y                                                           N
+10.1080/0951192x.2025.2482258                            or_substrate.formalization_level                                                          low                                                        none
+      10.1145/3742413.3789061                            or_substrate.formalization_level                                                          low                                                      medium
+         10.2139/ssrn.5370043                            or_substrate.formalization_level                                                         high                                                      medium
+10.1080/0951192x.2025.2482258                          or_substrate.optimization_paradigm                                                        other                                                     (empty)
+      10.1145/3742413.3789061                          or_substrate.optimization_paradigm                                                         MCDM                               MCDM; simulation-optimization
+10.1080/0951192x.2025.2482258                                    or_substrate.llm_or_role                                   direct-optimizer; verifier                                                        none
+      10.1145/3742413.3789061                                    or_substrate.llm_or_role                                                   formulator                      heuristic-designer; result-interpreter
+         10.2139/ssrn.5370043                                    or_substrate.llm_or_role          formulator; result-interpreter; solver-orchestrator                     result-interpreter; solver-orchestrator
+ 10.1016/j.mfglet.2025.10.017                        evaluation_and_outcomes.study_design                                        single-case; test-set                                      multi-case; user-study
+      10.1145/3742413.3789061                        evaluation_and_outcomes.study_design                            single-case; test-set; user-study                                        test-set; user-study
+   10.1016/j.jmsy.2026.02.015                 evaluation_and_outcomes.evaluation_paradigm                                                         both                                                naturalistic
+      10.1145/3742413.3789061                 evaluation_and_outcomes.evaluation_paradigm                                                   artificial                                                        both
+ 10.1016/j.mfglet.2025.10.017                          evaluation_and_outcomes.comparator                                                         none                                               human-planner
+         10.2139/ssrn.5370043         evaluation_and_outcomes.efficiency_metrics_reported                                                    partially                                                          no
+ 10.1016/j.mfglet.2025.10.017                                    gap_indicators.hitl_type                                          escalation-protocol                     escalation-protocol; iterative-feedback
+10.1080/0951192x.2025.2482258                                    gap_indicators.hitl_type                                           iterative-feedback                           approval-gate; iterative-feedback
+         10.2139/ssrn.5370043                                    gap_indicators.hitl_type                                            what-if-interface                            approval-gate; what-if-interface
+   10.1016/j.jmsy.2026.02.015                        gap_indicators.domain_knowledge_type                            code-template; mathematical-model                                               code-template
+ 10.1016/j.mfglet.2025.10.017                        gap_indicators.domain_knowledge_type                                          relational-database                      relational-database; structured-schema
+10.1080/0951192x.2025.2482258                        gap_indicators.domain_knowledge_type                        mathematical-model; structured-schema                                           structured-schema
+      10.1145/3742413.3789061                        gap_indicators.domain_knowledge_type                                            structured-schema                      relational-database; structured-schema
+         10.2139/ssrn.5370043                        gap_indicators.domain_knowledge_type                      mathematical-model; relational-database      code-template; mathematical-model; relational-database
+   10.1016/j.jmsy.2026.02.015                    gap_indicators.evaluation_framework_type custom-test-set; domain-specific-metric; expert-ground-truth                 domain-specific-metric; expert-ground-truth
+ 10.1016/j.mfglet.2025.10.017                    gap_indicators.evaluation_framework_type                 custom-test-set; expert-ground-truth; rubric                        custom-test-set; expert-ground-truth
+10.1080/0951192x.2025.2482258                    gap_indicators.evaluation_framework_type custom-test-set; domain-specific-metric; expert-ground-truth                     custom-test-set; domain-specific-metric
+      10.1145/3742413.3789061                    gap_indicators.evaluation_framework_type                                      custom-test-set; rubric                custom-test-set; expert-ground-truth; rubric
+         10.2139/ssrn.5370043                    gap_indicators.evaluation_framework_type                                              custom-test-set                     custom-test-set; domain-specific-metric
+10.1080/0951192x.2025.2482258                             gap_indicators.automation_stage action-implementation; information-acquisition; informati...                    decision-selection; information-analysis
+      10.1145/3742413.3789061                             gap_indicators.automation_stage decision-selection; information-acquisition; information-...                    decision-selection; information-analysis
+ 10.1016/j.mfglet.2025.10.017            quality_appraisal.q1_methodological_transparency                                                    Partially                                                         Yes
+      10.1145/3742413.3789061            quality_appraisal.q1_methodological_transparency                                                    Partially                                                         Yes
+10.1080/0951192x.2025.2482258   quality_appraisal.q2_empirical_or_demonstration_grounding                                                    Partially                                                         Yes
+ 10.1016/j.mfglet.2025.10.017     quality_appraisal.q3_validity_and_limitation_discussion                                                    Partially                                                         Yes
+10.1080/0951192x.2025.2482258     quality_appraisal.q3_validity_and_limitation_discussion                                                    Partially                                                         Yes
+   10.1016/j.jmsy.2026.02.015         quality_appraisal.q4_positioning_against_prior_work                                                    Partially                                                         Yes
+ 10.1016/j.mfglet.2025.10.017         quality_appraisal.q4_positioning_against_prior_work                                                    Partially                                                         Yes
+10.1080/0951192x.2025.2482258         quality_appraisal.q4_positioning_against_prior_work                                                    Partially                                                         Yes
+         10.2139/ssrn.5370043         quality_appraisal.q4_positioning_against_prior_work                                                           No                                                   Partially
+   10.1016/j.jmsy.2026.02.015                         quality_appraisal.prompts_disclosed                                                         full                                                     partial
+         10.2139/ssrn.5370043                         quality_appraisal.prompts_disclosed                                                         none                                                     partial
+ 10.1016/j.mfglet.2025.10.017                            quality_appraisal.data_available                                                         none                                                     partial
