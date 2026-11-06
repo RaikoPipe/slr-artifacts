@@ -1,3 +1,29 @@
+## 06.11.2026
+- r1 verification of the full GLM 5.3 extraction: workflow_patterns and automation_stage reached the ≥3 error rule -> prompt refinement + field re-run
+- schema 0.10.4 (rules tagged `(0.10.4)` in the field descriptions):
+  - workflow_patterns: evaluator-optimizer requires an LLM evaluator; feedback from deterministic code (validation, solver, simulator, repair) does not count, a single agent with such feedback is `none`; the generator->evaluator order of separate LLM calls inside the loop is also coded as prompt-chaining; each pattern needs two LLM calls with distinct roles
+  - automation_stage: information-acquisition only for input gathered from sources beyond the given problem instance (encoding/pre-processing the supplied instance does not count); stages count for any component of the method (incl. the solver/algorithm the LLM drives); decision-selection and action-implementation refer to the final planning decision only -> choices inside the search (LLM tuning the algorithm, parent selection, Pareto filtering) are neither, handing the human a Pareto front is not decision-selection, returning/reporting a solution or a human triggering the action is not action-implementation
+- r1 labels contradicted each other (returning the best solution counted as implementation in one paper but not in another; in-search choices counted as selection in one Pareto-front paper but not in another) -> decided for the final-planning-decision reading
+- re-ran both fields with GLM 5.3 for all 34 papers (prompt-refined-runs/v0.10.4/wp_as_rerun_0.10.4)
+  - workflow_patterns: 10/10 verified labels reproduced -> revised values written into r1 v3 for the 24 unverified papers
+  - automation_stage: 7/10 verified labels reproduced; the 3 misses are r1 labels that conflict with the final-planning-decision reading (cie.2026.112346, cie.2026.112261, jmsy.2026.02.015) -> r1 labels to be corrected
+- re-run tables keep the schema annotation of each re-run field as a header note
+- pilot consensus (v0.10.2) added to r1 v3 row 1 for the 5 pilot papers and marked verified: categorical fields `c` where the consensus differs from the GLM value (counted as LLM error), `y` where it agrees; free text `y`; cells already verified by r1 left as they are; reported_metrics not merged yet
+- 9 categorical r1 decisions differed from the consensus -> consensus adopted (value + its reasoning, marked `y`): jmsy.2026.02.015 planning_horizon_tiers, integrations (r1 correction withdrawn), source, domain_knowledge_type, evaluation_framework_type, Q4; mfglet.2025.10.017 subdomain, planning_task_type (+ other specification), vdi5200_phase
+- consensus checked against the 0.10.3/0.10.4 rules: 12 of 15 Q2/workflow_patterns/automation_stage values hold; 3 corrected in r1 v3 (marker compares with the GLM re-run value: `y` if the re-run had it right, else `c`):
+  - SCSimulator (10.1145/3742413.3789061) Q2 Yes -> Partially (no variance, no baseline) -> re-run correct, `y`
+  - SCSimulator automation_stage -> information-analysis only (data mapping is pre-processing; partner choices are made by agents inside the simulation) -> re-run also wrong (coded selection + implementation), `c`
+  - jmsy.2026.02.015 automation_stage: drop action-implementation (adaptor writes candidate model versions, not the final decision); replaces the earlier r1 correction -> re-run correct, `y`
+- 0.10.4 automation_stage rule extended: decisions of agents inside a simulation are neither decision-selection nor action-implementation (consistent with decision_autonomy); added after the 0.10.4 re-run
+
+## 04.11.2026
+- r1 verification: q2_empirical_or_demonstration_grounding reached the ≥3 error rule -> prompt refinement + field re-run
+- cause: GLM did not know the study-type category (validation_status sits in another group), A anchors too loose, no anchors for B and C
+- schema 0.10.3: Q2 states the validation_status -> category mapping and settles the category first; stricter A criteria (every evaluation behind the main claims, operationally defined metrics, results contradicting the text capped at Partially); Yes/Partially/No anchors for B and C
+- re-ran Q2 with GLM 5.3 for all 34 papers, each with its 0.10.2 validation_status passed in and the reasoning capped at 600 characters (prompt-refined-runs/v0.10.3/q2_rerun_0.10.3)
+  - 7/7 verified labels reproduced incl. the 3 corrections (only cor.2026.107413 is a fair holdout, the other two informed the rules)
+  - revised values written into r1 v3 for the 27 unverified papers; r1 without the Claude rows stored as 02_Full_extraction/full_retrieval_glm_5.3_r1.ods
+
 ## 27.10.2026
 - consensus reviewed against revised rules; 3 cells corrected (authors_claimed_tier, system_configuring_decision_stated, Q3), schema_version -> 0.10.2
 - schema 0.10.2: Q1 availability, Q2 category anchors, network-member selection, evaluation paradigm clarified
