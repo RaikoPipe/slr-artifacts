@@ -22,7 +22,7 @@
 - schema 0.10.3: Q2 states the validation_status -> category mapping and settles the category first; stricter A criteria (every evaluation behind the main claims, operationally defined metrics, results contradicting the text capped at Partially); Yes/Partially/No anchors for B and C
 - re-ran Q2 with GLM 5.3 for all 34 papers, each with its 0.10.2 validation_status passed in and the reasoning capped at 600 characters (prompt-refined-runs/v0.10.3/q2_rerun_0.10.3)
   - 7/7 verified labels reproduced incl. the 3 corrections (only cor.2026.107413 is a fair holdout, the other two informed the rules)
-  - revised values written into r1 v3 for the 27 unverified papers; r1 without the Claude rows stored as 02_Full_extraction/full_retrieval_glm_5.3_r1.ods
+  - revised values written into r1 v3 for the 27 unverified papers; r1 stored as 02_Full_extraction/full_retrieval_glm_5.3_r1.ods
 
 ## 27.10.2026
 - consensus reviewed against revised rules; 3 cells corrected (authors_claimed_tier, system_configuring_decision_stated, Q3), schema_version -> 0.10.2
